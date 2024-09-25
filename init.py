@@ -1,5 +1,11 @@
 import cv2
 import numpy as np
+import pytesseract
+
+def detect_imprint():
+    image = cv2.imread()
+    img_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    return img_gray
 
 def detect_color():
     # Load image
@@ -30,5 +36,10 @@ def detect_input():
     img_path = input()
     return img_path
 
+
+img_path = detect_input()
 colors_found = detect_color(img_path)
+image_gray = detect_imprint(img_path)
+
 print("Detected Colors:", colors_found)
+print(image_gray)
