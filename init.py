@@ -2,14 +2,14 @@ import cv2
 import numpy as np
 import pytesseract
 
-def detect_imprint():
-    image = cv2.imread()
+def detect_imprint(img_path):
+    image = cv2.imread(img_path)
     img_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     return img_gray
 
-def detect_color():
+def detect_color(img_path):
     # Load image
-    image = cv2.imread()
+    image = cv2.imread(img_path)
     # Convert to HSV color space
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     
@@ -18,6 +18,7 @@ def detect_color():
         'red': ([0, 100, 100], [10, 255, 255]),
         'green': ([40, 100, 100], [80, 255, 255]),
         'blue': ([100, 100, 100], [140, 255, 255]),
+        #pink
         # Add more colors as needed
     }
 
@@ -42,4 +43,6 @@ colors_found = detect_color(img_path)
 image_gray = detect_imprint(img_path)
 
 print("Detected Colors:", colors_found)
-print(image_gray)
+cv2.imshow('Grayscale Image', image_gray)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
