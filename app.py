@@ -32,7 +32,8 @@ def detect_color(img_path):
         'red': ([0, 100, 100], [10, 255, 255]),
         'green': ([40, 100, 100], [80, 255, 255]),
         'blue': ([100, 100, 100], [140, 255, 255]),
-        'pink': ([140, 100, 100], [170, 255, 255])
+        'pink': ([140, 100, 100], [170, 255, 255]),
+        'orange': ([], [])
     }
 
     detected_colors = []
@@ -44,11 +45,6 @@ def detect_color(img_path):
             detected_colors.append(color)
 
     return detected_colors
-
-#def detect_input():
-    print("Please enter the image you wish to enter:")
-    img_path = input()
-    return img_path
 
 @app.route("/", methods=['GET', 'POST'])
 def upload_file():
@@ -77,14 +73,6 @@ def upload_file():
     
     return render_template('index.html')
 
-#img_path = detect_input()
-#colors_found = detect_color(img_path)
-#image_gray = detect_imprint(img_path)
-
-#print("Detected Colors:", colors_found)
-#cv2.imshow('Grayscale Image', image_gray)
-#cv2.waitKey(0)
-#cv2.destroyAllWindows()
 
 if __name__ == '__main__':
     app.run(debug=True)
